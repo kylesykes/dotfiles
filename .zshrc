@@ -23,23 +23,6 @@ BULLETTRAIN_DIR_BG=025
 BULLETTRAIN_VIRTUALENV_BG=184
 BULLETTRAIN_VIRTUALENV_FG=black
 
-
-SPACESHIP_PROMPT_ORDER=(
-  conda         # conda virtualenv section
-  user          # Username section
-  dir           # Current directory section
-  host          # Hostname section
-  git           # Git section (git_branch + git_status)
-  docker        # Docker section
-  exec_time     # Execution time
-  exit_code     # Exit code section
-  line_sep      # Line break
-  char          # Prompt character
-)
-
-SPACESHIP_CONDA_PREFIX=''
-SPACESHIP_CONDA_SUFFIX=' '
-
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
 # cause zsh load theme from this variable instead of
