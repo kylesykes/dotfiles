@@ -1,0 +1,39 @@
+[user]
+	email = kyle.a.sykes@gmail.com
+	name = Kyle Sykes
+[alias]
+	lg = log --graph --abbrev-commit --decorate --format=format:'%C(yellow)%h%C(reset)%C(auto)%d%C(reset) %C(normal)%s%C(reset) %C(dim white)%an%C(reset) %C(dim blue)(%ar)%C     (reset)' --all
+	# one-line log
+    l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+
+    a = add
+    ap = add -p
+    c = commit --verbose
+    ca = commit -a --verbose
+    cm = commit -m
+    cnm = commit --no-verify -m
+    cam = commit -a -m
+    m = commit --amend --verbose
+
+    d = diff
+    ds = diff --stat
+    dc = diff --cached
+
+    s = status -s
+    co = checkout
+    cob = checkout -b
+    # list branches sorted by last modified
+    b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
+
+    # list aliases
+    la = "!git config -l | grep alias | cut -c 7-"
+[pull]
+	rebase = false
+[push]
+	autoSetupRemote = true
+[rerere]
+	enabled = true
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
