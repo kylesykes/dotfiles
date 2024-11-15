@@ -2,8 +2,8 @@
 	email = kyle.a.sykes@gmail.com
 	name = Kyle Sykes
 [alias]
-	lg = log --graph --abbrev-commit --decorate --format=format:'%C(yellow)%h%C(reset)%C(auto)%d%C(reset) %C(normal)%s%C(reset) %C(dim white)%an%C(reset) %C(dim blue)(%ar)%C     (reset)' --all
-	# one-line log
+    lg = log --graph --abbrev-commit --decorate --format=format:'%C(yellow)%h%C(reset)%C(auto)%d%C(reset) %C(normal)%s%C(reset) %C(dim white)%an%C(reset) %C(dim blue)(%ar)%C     (reset)' --all
+    # one-line log
     l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
 
     a = add
@@ -13,12 +13,17 @@
     cm = commit -m
     cnm = commit --no-verify -m
     cam = commit -a -m
+    cp = cherry-pick
     m = commit --amend --verbose
-
+    
     d = diff
     ds = diff --stat
     dc = diff --cached
 
+    delloc = ! git branch -D `git branch | grep -i -v -E \"main|master|production\"`
+	staash = stash --all
+
+    fm = fetch origin main
     s = status -s
     co = checkout
     cob = checkout -b
@@ -27,6 +32,15 @@
 
     # list aliases
     la = "!git config -l | grep alias | cut -c 7-"
+
+    # rebase aliases
+    ro = !sh -c 'git rebase --onto $1 $2 $(git rev-parse --abbrev-ref HEAD)' -
+    ri = rebase -i --keep-base origin/main
+    rh = reset --hard
+    recon = rebase --continue
+    rebom = rebase origin/main
+    rebort = rebase --abort
+
 [pull]
 	rebase = false
 [push]
@@ -37,3 +51,14 @@
 	ui = auto
 [branch]
 	sort = -committerdate
+[maintenance]
+	repo = /Users/kyle/avise/qbo-sync
+	repo = /Users/kyle/avise/avise-api
+[core]
+	excludesfile = /Users/kyle/.gitignore_global
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
